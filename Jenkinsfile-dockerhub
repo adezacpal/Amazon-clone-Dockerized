@@ -5,7 +5,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('gitbud-fancy')
+    DOCKERHUB_CREDENTIALS = credentials('fancy-docker-amz')
     APP_NAME = "fancyacrobat/amazon"
     }
     stages { 
