@@ -25,6 +25,13 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
+        
+        stage('Trivy Scan (Aqua)') {
+            steps {
+                 sh 'trivy image --format template --output trivy_report.html fancyacrobat/amazon:latest'            
+            }       
+        }
+        
         stage('push image') {
             steps{
                 sh 'docker push $APP_NAME:$BUILD_NUMBER'
