@@ -40,7 +40,7 @@ pipeline {
         
         stage('Trivy Scan (Aqua)') {
             steps {
-                 sh 'trivy image --format template --output trivy_report.html fancyacrobat/amazon:latest'            
+                 sh 'trivy image $APP_NAME:$BUILD_NUMBER'            
             }       
         }
         
